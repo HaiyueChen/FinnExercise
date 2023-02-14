@@ -14,4 +14,4 @@ Run the App:
 Run unit tests:
 
     cd BlackJack
-    mvn test-compile
+    mvn test
