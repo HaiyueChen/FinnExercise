@@ -18,6 +18,21 @@ public class Result {
         this.dealerCards = dealerCards;
     }
 
+    public String getWinner()
+    {
+        return this.winner;
+    }
+
+    public Iterable<Card> getSamCards()
+    {
+        return this.samCards;
+    }
+
+    public Iterable<Card> getDealerCards()
+    {
+        return this.getDealerCards();
+    }
+
     @Override
     public String toString()
     {

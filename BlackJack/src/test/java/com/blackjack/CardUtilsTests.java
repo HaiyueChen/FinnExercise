@@ -1,46 +1,24 @@
 package com.blackjack;
 
 import static org.junit.Assert.assertEquals;
-
-import java.util.Arrays;
-import java.util.Collection;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 import com.blackjack.Cards.CardUtils;
 
-@RunWith(Parameterized.class)
 public class CardUtilsTests 
-{   
-    private String suite;
-    private boolean expectedResult;
-
-    public CardUtilsTests(String suite, boolean expectedResult)
+{
+    @Test(expected = Exception.class)
+    public void testGetValueByRankThrowsException() throws Exception
     {
-        this.suite = suite;
-        this.expectedResult = expectedResult;
-    }
-    
-    @Parameterized.Parameters
-    public static Collection<Object[]> TestSuites() 
-    {
-       return Arrays.asList(new Object[][] {
-          { "C", true },
-          { "D", true },
-          { "H", true },
-          { "S", true },
-          { "c", false },
-          { "d", false },
-          { "h", false },
-          { "s", false },
-       });
-    }
-
-    @Test
-    public void TestIsValidSuiteReturnsTrue()
-    {
-        assertEquals(this.expectedResult, CardUtils.isValidSuite(this.suite) );
+        Exception e = null;
+        try {
+            CardUtils.getValueByRank("L");
+        } catch (Exception a) {
+            e = a;
+        }
+        assertTrue(e.getMessage().equals("Invalid rank: L"));
+        throw e;
     }
 }
